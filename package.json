@@ -1,8 +1,10 @@
 {
-  "name": "vs-code-show-current-line-in-gitk",
-  "displayName": "Show current line in gitk",
-  "description": "",
+  "name": "vscode-gitk-blame",
+  "displayName": "Gitk Blame",
+  "description": "An extension that blames the current line by jumping straight into gitk.",
+  "repository": "https://github.com/stefanhaller/vscode-gitk-blame",
   "version": "0.0.1",
+  "publisher": "stk-ableton",
   "engines": {
     "vscode": "^1.47.0"
   },
@@ -10,13 +12,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vs-code-show-current-line-in-gitk.showCurrentLineInGitk"
+    "onCommand:vscode-gitk-blame.showCurrentLineInGitk"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vs-code-show-current-line-in-gitk.showCurrentLineInGitk",
+        "command": "vscode-gitk-blame.showCurrentLineInGitk",
         "title": "Show current line in gitk"
       }
     ]
@@ -41,5 +43,9 @@
     "mocha": "^7.1.2",
     "typescript": "^3.8.3",
     "vscode-test": "^1.3.0"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "promisify-child-process": "^4.1.1"
   }
 }
