@@ -3,7 +3,7 @@
   "displayName": "Gitk Blame",
   "description": "An extension that blames the current line by jumping straight into gitk.",
   "repository": "https://github.com/stefanhaller/vscode-gitk-blame",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "stk-ableton",
   "engines": {
     "vscode": "^1.47.0"

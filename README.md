@@ -19,7 +19,7 @@ This requires a patched version of gitk. Ableton's custom Mac installer for git 
 
 ## Release Notes
 
-### Unreleased
+### 0.0.2
 
 Add a second command `showLogForCurrentLineRangeInGitk`.
 
