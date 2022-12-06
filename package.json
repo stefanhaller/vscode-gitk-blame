@@ -12,7 +12,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscode-gitk-blame.showCurrentLineInGitk"
+    "onCommand:vscode-gitk-blame.showCurrentLineInGitk",
+    "onCommand:vscode-gitk-blame.showLogForCurrentLineRangeInGitk"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -20,6 +21,10 @@
       {
         "command": "vscode-gitk-blame.showCurrentLineInGitk",
         "title": "Show current line in gitk"
+      },
+      {
+        "command": "vscode-gitk-blame.showLogForCurrentLineRangeInGitk",
+        "title": "Show log for current line range in gitk"
       }
     ]
   },

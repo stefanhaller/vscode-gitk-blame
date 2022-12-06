@@ -72,6 +72,35 @@ async function showCurrentLineInGitk() {
   );
 }
 
+async function showLogForCurrentLineRangeInGitk() {
+  const editor = vscode.window?.activeTextEditor;
+
+  if (editor === undefined) {
+    vscode.window.showInformationMessage(
+      "Show log for current line range in gitk: No editor window in focus"
+    );
+    return;
+  }
+
+  if (editor.document.uri.scheme !== "file") {
+    vscode.window.showInformationMessage(
+      "Show log for current line range in gitk: document is not a file saved on disk"
+    );
+    return;
+  }
+
+  const filePath = editor.document.uri.fsPath;
+  const start = editor.selection.start;
+  const end = editor.selection.end;
+  const startLine = start.line + 1;
+  const endLine =
+    end.line > start.line && end.character === 0 ? end.line : end.line + 1;
+
+  await spawn("gitk", [`-L${startLine},${endLine}:${filePath}`], {
+    cwd: path.dirname(filePath),
+  });
+}
+
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand(
@@ -79,6 +108,18 @@ export function activate(context: vscode.ExtensionContext) {
       async () => {
         try {
           await showCurrentLineInGitk();
+        } catch (err) {
+          vscode.window.showErrorMessage(`${err}`);
+        }
+      }
+    )
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      "vscode-gitk-blame.showLogForCurrentLineRangeInGitk",
+      async () => {
+        try {
+          await showLogForCurrentLineRangeInGitk();
         } catch (err) {
           vscode.window.showErrorMessage(`${err}`);
         }
